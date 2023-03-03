@@ -1,0 +1,21 @@
+function setAlarm(time, callback) {
+  const now = new Date();
+  const alarmTime = new Date(time);
+  const timeToAlarm = alarmTime.getTime() - now.getTime();
+
+  if (timeToAlarm < 0) {
+    // If the alarm time is in the past, don't set the alarm
+    return;
+  }
+
+  // Set a timeout to execute the callback function at the alarm time
+  setTimeout(callback, timeToAlarm);
+}
+This function takes two arguments:
+
+time: A string representing the time to set the alarm, in the format "HH:MM:SS".
+callback: A function to execute when the alarm goes off.
+To use the function, you can pass a time string and a callback function as arguments. For example:
+setAlarm("08:00:00", () => {
+  console.log("Wake up!");
+});
